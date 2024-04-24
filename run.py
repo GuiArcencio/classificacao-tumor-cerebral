@@ -9,13 +9,11 @@ from figshare import FigshareDataset
 from rocket import Rocket
 
 if __name__ == "__main__":
-    torch.multiprocessing.set_start_method('spawn')
-
-    dataset = FigshareDataset(device="cuda")
+    dataset = FigshareDataset()
     train_dataset, test_dataset = random_split(dataset, [0.7, 0.3])
 
     start = perf_counter()
-    model = Rocket(n_filters=100, device="cuda", seed=None)
+    model = Rocket(n_filters=1000, device="cuda", seed=None)
     model.fit(train_dataset)
     y_true, y_pred = model.predict(test_dataset, return_true_labels=True)
     end = perf_counter()

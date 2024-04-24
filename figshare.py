@@ -17,10 +17,8 @@ class FigshareDataset(Dataset):
     def __init__(
         self,
         folder="datasets/figshare",
-        device="cpu"
     ):
         self._folder = folder
-        self._device = device
         self._length = \
             len(listdir(f"{folder}/meningioma")) + \
             len(listdir(f"{folder}/glioma")) + \
@@ -50,7 +48,7 @@ class FigshareDataset(Dataset):
 
         data = data / np.max(data)
         data = data.astype(np.float32)
-        data = torch.tensor(data, dtype=torch.float32, device=self._device)
+        data = torch.tensor(data, dtype=torch.float32)
         data = data.reshape((1, *data.shape))
         data = self._resizer(data)
 

@@ -74,12 +74,16 @@ class Rocket:
             dataset,
             batch_size=self._batch_size,
             num_workers=2,
+            pin_memory=True,
+            pin_memory_device=self._device,
             shuffle=False,
         )
         transformed_dataset = np.empty((len(dataset), self._n_filters * 2))
         transformed_labels = np.empty(len(dataset), dtype=int)
 
         for batch_idx, (imgs, labels) in enumerate(loader):
+            imgs = imgs.to(torch.device(self._device), non_blocking=True)
+
             idx_start = batch_idx * self._batch_size
             idx_end = idx_start + labels.shape[0]
             data_idx = np.arange(idx_start, idx_end)
