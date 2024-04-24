@@ -13,14 +13,17 @@ class Rocket:
         n_filters=10000,
         batch_size=128,
         device="cpu",
-        seed=None
+        random_state=None
     ):
         self._n_filters = n_filters
         self._device = device
         self._classifier = RidgeClassifierCV()
         self._batch_size = batch_size
         self._kernels = []
-        self._rng = np.random.default_rng(seed)
+        if type(random_state) == np.random.Generator:
+            self._rng = random_state
+        else:
+            self._rng = np.random.default_rng(random_state)
 
     def fit(self, dataset):
         _, height, width = dataset[0][0].shape
