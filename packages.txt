@@ -1,9 +1,7 @@
 ipykernel
 numpy
-scipy
 matplotlib
 pandas
 torch
-lightning
-scikit-learn
 torchvision
+scikit-learn
