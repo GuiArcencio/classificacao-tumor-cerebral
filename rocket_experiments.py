@@ -21,7 +21,7 @@ if __name__ == "__main__":
     cv = StratifiedKFold(n_splits=N_FOLDS, shuffle=True, random_state=rng.integers(2**32 - 1))
     dataset = FigshareDataset()
 
-    for n_filters in [10]:#, 100, 1000, 10000]:
+    for n_filters in [10, 100, 1000, 10000]:
         print(f"Testing Rocket with {n_filters} kernels")
 
         for iteration in range(N_REPETITIONS):
