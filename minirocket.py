@@ -68,7 +68,7 @@ class MiniRocket:
                 kernel.weight = weights
 
                 random_example, _ = dataset[self._rng.integers(n_examples)]
-                random_conv = kernel(random_example)
+                random_conv = kernel(random_example.to(torch.device(self._device)))
 
                 this_quantiles = quantiles[feature_index_start:feature_index_end]
                 this_quantiles = tensor(this_quantiles, dtype=torch.float32, device=self._device)
@@ -128,12 +128,17 @@ class MiniRocket:
         loader = DataLoader(
             dataset,
             batch_size=self._batch_size,
+            num_workers=2,
+            pin_memory=True,
+            pin_memory_device=self._device,
             shuffle=False,
         )
         transformed_dataset = np.empty((len(dataset), self._n_features))
         transformed_labels = np.empty(len(dataset), dtype=int)
 
         for batch_idx, (imgs, labels) in enumerate(loader):
+            imgs = imgs.to(torch.device(self._device), non_blocking=True)
+
             idx_start = batch_idx * self._batch_size
             idx_end = idx_start + labels.shape[0]
             data_idx = np.arange(idx_start, idx_end)
