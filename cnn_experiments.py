@@ -51,26 +51,3 @@ if __name__ == "__main__":
 
         with open(f"results/figshare/cnn/run_{iteration}_runtime.txt", "w") as f:
             f.write(f"{runtime / N_FOLDS:4f}")
-            
-
-
-            
-
-
-
-
-
-
-"""
-    dataset = FigshareDataset()
-    train_dataset, test_dataset = random_split(dataset, [0.7, 0.3])
-
-    start = perf_counter()
-    model = Rocket(n_filters=1000, device="cuda", seed=None)
-    model.fit(train_dataset)
-    y_true, y_pred = model.predict(test_dataset, return_true_labels=True)
-    end = perf_counter()
-
-    print(end - start)
-    print(accuracy_score(y_true, y_pred))
-"""
