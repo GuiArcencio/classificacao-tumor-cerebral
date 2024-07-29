@@ -8,7 +8,7 @@ from sklearn.model_selection import StratifiedKFold
 from torch.utils.data import Subset
 
 from figshare import FigshareDataset
-from rocket import Rocket
+from models.rocket import Rocket
 
 N_REPETITIONS = 5
 N_FOLDS = 10

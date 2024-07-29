@@ -8,9 +8,9 @@ from sklearn.model_selection import StratifiedKFold
 from torch.utils.data import Subset
 
 from figshare import FigshareDataset
-from rocket import Rocket
-from minirocket import MiniRocket
-from cnn import BadzaCNN
+from models.rocket import Rocket
+from models.minirocket import MiniRocket
+from models.cnn import BadzaCNN
 
 N_REPETITIONS = 5
 N_FOLDS = 5
