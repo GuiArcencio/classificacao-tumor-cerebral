@@ -1,4 +1,3 @@
-# TODO: check license stuff
 # Adapted from https://github.com/angus924/minirocket
 
 import numpy as np
