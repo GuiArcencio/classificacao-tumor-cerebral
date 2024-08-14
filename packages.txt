@@ -6,3 +6,4 @@ torch
 torchvision
 scikit-learn
 seaborn
+h5py

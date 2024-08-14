@@ -2,3 +2,4 @@ env
 datasets/*
 __pycache__
 lightning_logs/
+figshare/
